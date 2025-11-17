@@ -152,33 +152,98 @@
                 </section>
                 
 
-<!-- NEW GEMINI FEATURE: Ingredient Intelligence Decoder (Google Search Grounding) -->
-<section id="ingredient-decoder" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">✨ Ingredient Intelligence Decoder</h2>
-        <p class="text-lg text-gray-600 mb-8 text-center">
-            Demystify confusing ingredients instantly. Get a simple, scientifically-backed explanation using Google Search.
-        </p>
+async function generateIngredientInfo() {
+    const promptInput = document.getElementById('ingredientPrompt');
+    const outputDiv = document.getElementById('ingredientOutput');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const citationOutput = document.getElementById('citationOutput');
+    const generateIngredientBtn = document.getElementById('generateIngredientBtn');
+    const ingredient = promptInput.value.trim();
 
-        <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-primary-custom/30">
-            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <input type="text" id="ingredientPrompt" value="Niacinamide" placeholder="Enter ingredient name (e.g., Retinol)" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-custom focus:border-primary-custom">
-                <button id="generateIngredientBtn" class="bg-primary-custom text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-darker transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                    Decode Ingredient
-                </button>
-            </div>
+    if (!ingredient) {
+        outputDiv.innerHTML = '<span class="text-red-500">Please enter an ingredient name.</span>';
+        return;
+    }
+    
+    // System prompt defines the AI's persona
+    const systemPrompt = "You are a friendly, expert, and empowering skincare analyst (GlowBot). Provide a concise, single-paragraph explanation of the benefits and purpose of the requested skincare ingredient. Use simple, non-medical language.";
+    
+    // Refined User Query to force strong grounding and better search results
+    const userQuery = `What are the definitive benefits and purpose of the skincare ingredient: ${ingredient}? Provide a summary based on search results.`;
+    
+    outputDiv.textContent = '';
+    citationOutput.textContent = '';
+    loadingIndicator.classList.remove('hidden');
+    generateIngredientBtn.disabled = true;
+
+    const payload = {
+        contents: [{ parts: [{ text: userQuery }] }],
+        tools: [{ "google_search": {} }], // THIS ENABLES SECURE SEARCH GROUNDING
+        systemInstruction: {
+            parts: [{ text: systemPrompt }]
+        },
+    };
+
+    const url = `${API_URL}?key=${API_KEY}`;
+
+    try {
+        let response;
+        const maxRetries = 5;
+        for (let i = 0; i < maxRetries; i++) {
+            response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.status !== 429) {
+                break;
+            }
+            const delay = Math.pow(2, i) * 1000;
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        const candidate = result.candidates?.[0];
+        const text = candidate?.content?.parts?.[0]?.text;
+        
+        if (text) {
+            outputDiv.textContent = text;
             
-            <div id="ingredientOutput" class="mt-6 p-4 min-h-[100px] bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
-                Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
-            </div>
-            <div id="loadingIndicator" class="hidden mt-4 text-center text-primary-custom font-medium">
-                Analyzing ingredient...
-            </div>
-            <div id="citationOutput" class="mt-4 text-xs text-gray-500 text-left"></div>
-        </div>
-    </div>
-</section>
+            // Extract and display citations
+            let sources = [];
+            const groundingMetadata = candidate?.groundingMetadata;
+            if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                sources = groundingMetadata.groundingAttributions
+                    .map(attribution => ({
+                        uri: attribution.web?.uri,
+                        title: attribution.web?.title,
+                    }))
+                    .filter(source => source.uri && source.title);
+            }
 
+            if (sources.length > 0) {
+                citationOutput.innerHTML = 'Source: ' + sources.map(s => 
+                    `<a href="${s.uri}" target="_blank" class="text-blue-500 hover:underline">${s.title}</a>`
+                ).join(', ');
+            }
+
+        } else {
+            outputDiv.innerHTML = '<span class="text-red-500">Sorry, Google Search could not find reliable information for that ingredient. Try another common ingredient.</span>';
+        }
+
+    } catch (error) {
+        console.error("API Error:", error);
+        outputDiv.innerHTML = `<span class="text-red-500">Error decoding ingredient. Please check console for details.</span>`;
+    } finally {
+        loadingIndicator.classList.add('hidden');
+        generateIngredientBtn.disabled = false;
+    }
+}
                 <!-- Key Features Section (Product Showcase) -->
                 <section id="features" class="py-20 bg-gray-50/50">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
