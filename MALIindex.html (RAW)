@@ -60,16 +60,12 @@
 </head>
 <body>
     
-    <!-- Main Content Wrapper -->
-    <div class="min-h-screen flex flex-col">
-
         <!-- Header Navigation (Shared across all "pages") -->
         <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <a href="#" class="text-2xl font-black tracking-wider text-primary-custom" onclick="showPage('home-page')">GlowBot<span class="text-gray-800">.ai</span></a>
                 <nav class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#features" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#features')">Features</a>
-                    <a href="#problem" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#problem')">Our Solution</a>
                     <a href="#mission" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#mission')">Mission</a>
                     <a href="#cta" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#cta')">Download</a>
                 </nav>
@@ -80,14 +76,10 @@
                 </div>
             </div>
         </header>
-
-        <!-- Dynamic Main Content Area -->
-        <main class="flex-grow">
-            
             <!-- ------------------------------------------------------------------- -->
             <!-- 1. HOME PAGE (The main landing page content) -->
             <!-- ------------------------------------------------------------------- -->
-            <div id="home-page" class="page-content active py-10 sm:py-14">
+            <div id="home-page" class="page-content active">
                 
                 <!-- Hero Section -->
                 <section class="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -168,7 +160,7 @@
                 </button>
             </div>
             
-            <div id="ingredientOutput" class="mt-6 p-4 min-h-[100px] bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
+            <div id="ingredientOutput" class="bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
                 Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
             </div>
             <div id="loadingIndicator" class="hidden mt-4 text-center text-primary-custom font-medium">
@@ -265,11 +257,11 @@
             <!-- ------------------------------------------------------------------- -->
             <!-- 2. AWARENESS PAGE (Interactive Content for Footer Link) -->
             <!-- ------------------------------------------------------------------- -->
-            <div id="awareness-page" class="page-content py-10 sm:py-14">
+            <div id="awareness-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Awareness</h1>
                     <p class="text-xl text-gray-600 mb-10">
-                        The Awareness phase establishes <strong>GlowBot's brand identity, purpose, and core benefits.</strong> Our goal is to capture curiosity and ensure Millennials and Gen Z recognize GlowBot as an innovative AI-powered solution.
+                        It establishes <strong>GlowBot's brand identity, purpose, and core benefits.</strong> Our goal is to capture curiosity and ensure Millennials and Gen Z recognize GlowBot as an innovative AI-powered solution.
                     </p>
 
 <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Key Content </h2>
@@ -303,19 +295,15 @@
              class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
     </div>
-    
-    <div class="bg-primary-custom/10 p-6 rounded-xl border border-primary-custom">
-        <p class="font-semibold text-primary-custom">Primary Goal: Maximize reach and establish strong initial brand recognition across all channels.</p>
-    </div>
 </div>
                 </div>
             </div><!-- End of #awareness-page -->
 <!-- ------------------------------------------------------------------- -->
 <!-- 3. EDUCATION PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
-<div id="education-page" class="page-content py-10 sm:py-14">
+<div id="education-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Education</h1>
+                    <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Education</h1>
         <p class="text-xl text-gray-600 mb-10">
             This phase is dedicated to showing <strong>how GlowBot works</strong> and how its features provide an <strong>affordable, reliable solution</strong> to the confusing, costly world of traditional skincare.
         </p>
@@ -386,11 +374,11 @@
         <!-- ------------------------------------------------------------------- -->
 <!-- 4. ENCOURAGEMENT PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
-<div id="encouragement-page" class="page-content py-10 sm:py-14">
+<div id="encouragement-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Encouragement</h1>
         <p class="text-xl text-gray-600 mb-10">
-            The Encouragement phase is designed to drive conversion by leveraging social proof, success stories, and exciting challenges to inspire confidence and prompt immediate action.
+            GlowBot is designed to drive conversion by leveraging social proof, success stories, and exciting challenges to inspire confidence and prompt immediate action.
         </p>
 
         <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Real Results: Before & After Proof</h2>
@@ -433,7 +421,7 @@
             <!-- ------------------------------------------------------------------- -->
 <!-- 2. PRICING & PLANS PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
-<div id="pricing-page" class="page-content py-10 sm:py-14">
+<div id="pricing-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
         <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -496,7 +484,7 @@
 <!-- ------------------------------------------------------------------- -->
 <!-- 5. FAQ/RESOURCES PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
-<div id="faq-page" class="page-content py-10 sm:py-14">
+<div id="faq-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Resources: FAQ & Policies</h1>
         <p class="text-xl text-gray-600 mb-10">
@@ -530,8 +518,8 @@
         </main> 
         <!-- The closing </main> tag is directly below the pages -->
 
-        <!-- Footer -->
-        <footer id="contact" class="bg-gray-900 mt-12">
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
                     <div>
