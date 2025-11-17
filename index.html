@@ -51,9 +51,9 @@
             border: 1px solid rgba(var(--color-primary), 0.3);
         }
 
-        /* Utility for simulating page transitions */
-        .page-content { display: none; }
-        .page-content.active { display: block; }
+        /* Utility for simulating page transitions. NOTE: The display property is now set via JS and inline styles for robustness. */
+        .page-content { } 
+        .page-content.active { display: block !important; } /* Use !important to override inline display:none */
     </style>
 </head>
 <body>
@@ -79,7 +79,7 @@
 
         <main class="flex-grow">
             
-            <div id="home-page" class="page-content active">
+            <div id="home-page" class="page-content active" style="display: block;">
                 
                 <section class="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
@@ -238,7 +238,7 @@
                         </p>
                     </div>
                 </section>
-            </div><div id="awareness-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
+            </div><div id="awareness-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32" style="display: none;">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Awareness</h1>
                     <p class="text-xl text-gray-600 mb-10">
@@ -273,7 +273,7 @@
              class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
         </div>
- </div><div id="education-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
+ </div><div id="education-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32" style="display: none;">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Education</h1>
         <p class="text-xl text-gray-600 mb-10">
@@ -330,7 +330,7 @@
           class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
          </div>
- </div><div id="encouragement-page" class="page-content py-8 sm:py-12">
+ </div><div id="encouragement-page" class="page-content py-8 sm:py-12" style="display: none;">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Encouragement</h1>
         <p class="text-xl text-gray-600 mb-10">
@@ -369,7 +369,7 @@
                 View Challenge Details &rarr;
             </a>
       </div>
- </div><div id="pricing-page" class="page-content py-8 sm:py-12">
+ </div><div id="pricing-page" class="page-content py-8 sm:py-12" style="display: none;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
         <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -423,7 +423,7 @@
                     Get Annual Plan
                 </button>
         </div>
-</div><div id="faq-page" class="page-content py-8 sm:py-12">
+</div><div id="faq-page" class="page-content py-8 sm:py-12" style="display: none;">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Resources: FAQ & Policies</h1>
         <p class="text-xl text-gray-600 mb-10">
@@ -503,11 +503,17 @@
     // --- UNIFIED showPage FUNCTION ---
  function showPage(pageId, anchorId = null) {
     document.querySelectorAll('.page-content').forEach(page => {
+        // Hide all pages by setting display: none
+        page.style.display = 'none';
         page.classList.remove('active');
     });
 
     const targetPage = document.getElementById(pageId);
-    if (targetPage) targetPage.classList.add('active');
+    if (targetPage) {
+        // Show only the target page and add the active class
+        targetPage.style.display = 'block';
+        targetPage.classList.add('active');
+    }
 
     setTimeout(() => {
         const header = document.querySelector('header');
@@ -580,10 +586,8 @@
         if (ingredientBtn) {
             ingredientBtn.addEventListener("click", generateIngredientInfo);
         }
-
-        // default home page
-        const homePage = document.getElementById("home-page");
-        if (homePage) homePage.classList.add("active");
+        
+        // Removed original JS initialization as the display is now guaranteed via inline styles/CSS.
     }
 
     window.onload = initializeApp;
