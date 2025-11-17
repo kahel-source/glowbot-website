@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowBot - Your AI Skincare Analyst</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         /* ------------------------------------------------------------------- */
@@ -51,15 +53,17 @@
             border: 1px solid rgba(var(--color-primary), 0.3);
         }
 
-        /* Utility for simulating page transitions. NOTE: The display property is now set via JS and inline styles for robustness. */
-        .page-content { } 
-        .page-content.active { display: block !important; } /* Use !important to override inline display:none */
+        /* Utility for simulating page transitions */
+        .page-content { display: none; }
+        .page-content.active { display: block; }
     </style>
 </head>
 <body>
-    
+
+    <!-- Main Content Wrapper -->
     <div class="min-h-screen flex flex-col">
 
+        <!-- Header Navigation (Shared across all "pages") -->
         <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <a href="#" class="text-2xl font-black tracking-wider text-primary-custom" onclick="showPage('home-page')">GlowBot<span class="text-gray-800">.ai</span></a>
@@ -77,12 +81,18 @@
             </div>
         </header>
 
+        <!-- Dynamic Main Content Area -->
         <main class="flex-grow">
-            
-            <div id="home-page" class="page-content active" style="display: block;">
-                
+
+            <!-- ------------------------------------------------------------------- -->
+            <!-- 1. HOME PAGE (The main landing page content) -->
+            <!-- ------------------------------------------------------------------- -->
+            <div id="home-page" class="page-content active">
+
+                <!-- Hero Section -->
                 <section class="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+                        <!-- Text Content -->
                         <div class="lg:w-1/2 lg:pr-12 text-center lg:text-left mb-10 lg:mb-0">
                             <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
                                 <span class="block text-gray-800">Your Personal</span>
@@ -101,13 +111,17 @@
                             </div>
                         </div>
 
+                        <!-- App Mockup/Visual Placeholder -->
                         <div class="lg:w-1/2 relative w-full max-w-sm lg:max-w-md">
                             <div class="app-mock-bg p-6 rounded-3xl shadow-2xl relative">
+                                <!-- Simple Phone/App Screen Mock-up -->
                                 <div class="w-full h-96 bg-gray-900 rounded-2xl shadow-inner border-4 border-gray-700 overflow-hidden">
+                                    <!-- App Header -->
                                     <div class="p-3 bg-gray-800 flex justify-between items-center text-white">
                                         <span class="text-sm font-semibold text-primary-custom">GlowBot</span>
                                         <span class="text-xs">9:41 AM</span>
                                     </div>
+                                    <!-- App Content: Analysis Screen -->
                                     <div class="p-4 h-full bg-white">
                                         <p class="text-center font-bold text-gray-700 mb-4">AI Analysis Complete!</p>
                                         <div class="w-full h-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 mb-4 border border-primary-custom border-dashed">
@@ -136,8 +150,9 @@
                         </div>
                     </div>
                 </section>
-                
 
+
+<!-- NEW GEMINI FEATURE: Ingredient Intelligence Decoder (Google Search Grounding) -->
 <section id="ingredient-decoder" class="py-16 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">✨ Ingredient Intelligence Decoder</h2>
@@ -152,7 +167,7 @@
                     Decode Ingredient
                 </button>
             </div>
-            
+
             <div id="ingredientOutput" class="mt-6 p-4 min-h-[100px] bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
                 Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
             </div>
@@ -163,11 +178,13 @@
         </div>
     </div>
 </section>
+                <!-- Key Features Section (Product Showcase) -->
                 <section id="features" class="py-20 bg-gray-50/50">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">3 Reasons Why You Need AI Skincare Today</h2>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Feature Card 1: AI Selfie Analysis (USP) -->
                             <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-t-4 border-primary-custom">
                                 <div class="w-16 h-16 bg-primary-custom/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                                     <svg class="fill-primary-custom w-8 h-8" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-12l-2 2h4l-2-2zm0 7l-2 2h4l-2-2z"/></svg>
@@ -179,6 +196,7 @@
                                 </a>
                             </div>
 
+                            <!-- Feature Card 2: Data-Driven Routines (USP) -->
                             <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-t-4 border-primary-custom">
                                 <div class="w-16 h-16 bg-primary-custom/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                                     <svg class="fill-primary-custom w-8 h-8" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -190,6 +208,7 @@
                                 </a>
                             </div>
 
+                            <!-- Feature Card 3: Accessible & Affordable (USP) -->
                             <div class="bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-t-4 border-primary-custom">
                                 <div class="w-16 h-16 bg-primary-custom/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                                     <svg class="fill-primary-custom w-8 h-8" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
@@ -203,8 +222,9 @@
                         </div>
                     </div>
                 </section>
-                
-               <section id="mission" class="py-20 bg-white">
+
+               <!-- Mission & Vision Section (New) -->
+<section id="mission" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-gray-50 rounded-2xl p-10 shadow-lg border-t-4 border-primary-custom flex flex-col md:flex-row gap-8">
             <div class="md:w-1/2">
@@ -222,8 +242,9 @@
         </div>
     </div>
 </section>
-                
-                
+
+
+                <!-- Call to Action Section -->
                 <section id="cta" class="py-20">
                     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-primary-custom rounded-3xl p-12 text-center shadow-2xl">
                         <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">Join the Glow-Up with GlowBot!</h2>
@@ -238,7 +259,13 @@
                         </p>
                     </div>
                 </section>
-            </div><div id="awareness-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32" style="display: none;">
+            </div><!-- End of #home-page -->
+
+
+            <!-- ------------------------------------------------------------------- -->
+            <!-- 2. AWARENESS PAGE (Interactive Content for Footer Link) -->
+            <!-- ------------------------------------------------------------------- -->
+            <div id="awareness-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Awareness</h1>
                     <p class="text-xl text-gray-600 mb-10">
@@ -246,130 +273,107 @@
                     </p>
 
 <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Key Content </h2>
-    
+
+    <!--  Behind the GlowBot Logo  -->
     <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
         <p class="font-semibold text-gray-800 mb-2">Behind the GlowBot Logo - What our Brand Stands For</p>
         <p class="text-gray-600 text-sm mb-3">Post establishing our identity as Friendly, Expert, and Empowering.</p>
-        <img src="./1.jpg" 
+        <img src="https://github.com/kahel-source/glowbot-website/blob/main/1.jpg?raw=true" 
              alt="Campaign Photo 1: GlowBot Logo" 
      class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
     </div>
 
+    <!-- Why GlowBot Exists  -->
     <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
         <p class="font-semibold text-gray-800 mb-2">Why GlowBot Exists (Problem + Insight)</p>
         <p class="text-gray-600 text-sm mb-3">Content highlighting the pain point of expensive, time-consuming clinic visits.</p>
-        <img src="./2.jpg" 
+        <img src="https://github.com/kahel-source/glowbot-website/blob/main/2.jpg?raw=true" 
              alt="Campaign Photo 2: Problem/Solution Diptych" 
            class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
     </div>
 
+    <!-- Reasons Why You Need AI Skincare Today -->
     <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
         <p class="font-semibold text-gray-800 mb-2">3 Reasons Why You Need AI Skincare Today</p>
         <p class="text-gray-600 text-sm mb-3">Directly pitches the core features: Instant Analysis, Personalized Routines, and Progress Tracking.</p>
-        <img src="./3.jpg" 
+        <img src="https://github.com/kahel-source/glowbot-website/blob/main/3.jpg?raw=true" 
              alt="Campaign Photo 3: AI Scan on Face" 
              class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
-        </div>
- </div><div id="education-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32" style="display: none;">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Education</h1>
-        <p class="text-xl text-gray-600 mb-10">
-            This phase is dedicated to showing <strong>how GlowBot works</strong> and how its features provide an <strong>affordable, reliable solution</strong> to the confusing, costly world of traditional skincare.
-        </p>
-
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">GlowBot Solutions:</h2>
-        <p class="text-lg text-gray-700 mb-8">We directly address the confusion, high cost, and time commitment associated with achieving clear skin.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
-                <h3 class="text-xl font-semibold mb-2 text-gray-800">Accurate AI Analysis</h3>
-                <p class="text-gray-600">GlowBot uses advanced <strong>AI and computer vision</strong> to analyze facial selfies, accurately detecting issues like acne, dryness, wrinkles, and uneven tone. It’s dermatology-inspired guidance at your fingertips.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
-                <h3 class="text-xl font-semibold mb-2 text-gray-800">Personalized Routines & Remedies</h3>
-                <p class="text-gray-600">Receive customized day-and-night routines, tailored to your skin type and goals, with <strong>data-driven recommendations</strong> for products or natural home remedies.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
-                <h3 class="text-xl font-semibold mb-2 text-gray-800">Progress Tracking & Motivation</h3>
-                <p class="text-gray-600">Our weekly progress tracker uses visual comparisons and improvement scores to keep you motivated and ensure your routine is consistently delivering results.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
-                <h3 class="text-xl font-semibold mb-2 text-gray-800">Accessible & Affordable Care</h3>
-                <p class="text-gray-600">We offer expert-level guidance as a convenient and much cheaper option, solving the problem of costly financial and time commitments associated with traditional dermatology clinic visits.</p>
-            </div>
-        </div>
-
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12">Key Content</h2>
-        <div class="space-y-4">
-            <div class="p-4 border-l-4 border-primary-custom bg-white shadow-md rounded-lg">
-                <p class="font-semibold text-gray-800 mb-2">Convenience and Cost-effectiveness</p>
-                <p class="text-gray-600 text-sm mb-3">Highlights the practical, cost-saving value of avoiding expensive appointments.</p>
-                <img src="./4.jpg" 
+    </div>
+    
+    <div class="bg-primary-custom/10 p-6 rounded-xl border border-primary-custom">
+        <p class="font-semibold text-primary-custom">Primary Goal: Maximize reach and establish strong initial brand recognition across all channels.</p>
+    </div>
+</div>
+                </div>
+            </div><!-- End of #awareness-page -->
+@@ -355,8 +351,8 @@
+                <!-- Insert Campaign Photo 4 -->
+                <img src="https://github.com/kahel-source/glowbot-website/blob/main/4.jpg?raw=true" 
                      alt="Campaign Photo 4: Convenience and Cost-effectiveness" 
+                             class="w-full rounded-lg shadow-xl"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/6DDAD3/1E2D49?text=Upload+Campaign+Photo+8';">
                    class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
             </div>
 
-            <div class="p-4 border-l-4 border-primary-custom bg-white shadow-md rounded-lg">
-                <p class="font-semibold text-gray-800 mb-2">Benefits of GlowBot</p>
-                <p class="text-gray-600 text-sm mb-3">Connect with different users engaging with the GlowBot to find common goals.</p>
-                <img src="./5.jpg" 
+            <!--  Benefits of GlowBot (Campaign Photo 5) -->
+@@ -366,8 +362,8 @@
+                <!-- Insert Campaign Photo 5 -->
+                <img src="https://github.com/kahel-source/glowbot-website/blob/main/5.jpg?raw=true" 
                      alt="Campaign Photo 5: Benefits of GlowBot" 
+                     class="w-full rounded-lg shadow-xl"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/6DDAD3/1E2D49?text=Upload+Campaign+Photo+8';">
                class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
             </div>
 
-            <div class="p-4 border-l-4 border-primary-custom bg-white shadow-md rounded-lg">
-                <p class="font-semibold text-gray-800 mb-2">Decode Ingredients Your Skin Needs</p>
-                <p class="text-gray-600 text-sm mb-3">Close-up visual of ingredient decoding and scientific focus.</p>
-                <img src="./1C.jpg" 
+            <!-- Dec 8th: Decode Ingredients Your Skin Needs (Campaign Photo 6) -->
+@@ -377,8 +373,8 @@
+                <!-- Insert Campaign Photo 6 -->
+                <img src="https://github.com/kahel-source/glowbot-website/blob/main/1C.jpg?raw=true" 
                      alt="Campaign Photo 6: Decode Ingredients" 
+                      class="w-full rounded-lg shadow-xl"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/6DDAD3/1E2D49?text=Upload+Campaign+Photo+8';">
           class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
-         </div>
- </div><div id="encouragement-page" class="page-content py-8 sm:py-12" style="display: none;">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Encouragement</h1>
-        <p class="text-xl text-gray-600 mb-10">
-            The Encouragement phase is designed to drive conversion by leveraging social proof, success stories, and exciting challenges to inspire confidence and prompt immediate action.
-        </p>
-
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Real Results: Before & After Proof</h2>
-        <div class="bg-white p-8 rounded-xl shadow-2xl border border-primary-custom/50 flex flex-col md:flex-row items-center gap-6">
-            <div class="md:w-1/2">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-3">See the Transformation!</h3>
-                <p class="text-gray-600 mb-4">GlowBot enables visual proof of your progress. Our weekly tracking system lets you compare your starting point to your current skin health—no guesswork, just data.</p>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li><strong>Goal:</strong> Foster confidence in the app's efficacy.</li>
-                    <li><strong>Action:</strong> Drive users to the download page.</li>
-                </ul>
             </div>
-            <div class="md:w-1/2 w-full">
-                <img src="./3C.jpg" 
+        </div>
+    </div>
+@@ -407,8 +403,8 @@
+                <!-- Insert Campaign Photo 8 (Before & After) -->
+                <img src="https://github.com/kahel-source/glowbot-website/blob/main/3C.jpg?raw=true" 
                      alt="GlowBot Before and After Progress Photo" 
+                     class="w-full rounded-lg shadow-xl"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/6DDAD3/1E2D49?text=Upload+Campaign+Photo+8';">
         class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
             </div>
         </div>
 
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12">Join the #GlowWithGlowBot Challenge</h2>
-        <div class="bg-primary-custom/10 p-8 rounded-xl border border-primary-custom">
-            <p class="text-lg font-semibold text-gray-800 mb-4">Post your bare-skin selfie and tag us to win a premium annual subscription!</p>
-            <p class="text-gray-600 mb-4">This user-generated content (UGC) strategy boosts interaction and builds community. We're looking for honest, authentic skin journeys—the real Glow-Up!</p>
-            
-            <img src="./5C.jpg" 
+@@ -420,239 +416,239 @@
+            <!-- INSERT CHALLENGE IMAGE HERE (Campaign Photo 6/Challenge Visual) -->
+            <img src="https://github.com/kahel-source/glowbot-website/blob/main/5C.jpg?raw=true" 
                  alt="#GlowWithGlowBot Challenge Visual" 
+                 class="w-full max-w-sm mx-auto rounded-lg shadow-md my-4"
+                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/A8F5D5/1E2D49?text=Challenge+Visual';">
      class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
 
             <a href="#cta" class="mt-4 inline-flex items-center text-primary-custom font-semibold hover:underline" onclick="showPage('home-page', '#cta')">
                 View Challenge Details &rarr;
             </a>
-      </div>
- </div><div id="pricing-page" class="page-content py-8 sm:py-12" style="display: none;">
+        </div>
+
+</div>
+</div><!-- End of #encouragement-page -->
+            <!-- ------------------------------------------------------------------- -->
+<!-- 2. PRICING & PLANS PAGE (Interactive Content for Footer Link) -->
+<!-- ------------------------------------------------------------------- -->
+<div id="pricing-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
         <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -377,6 +381,7 @@
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Free Tier -->
             <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-custom/50 text-left flex flex-col">
                 <h2 class="text-2xl font-bold mb-4 text-gray-800">Free Tier</h2>
                 <p class="text-5xl font-extrabold text-primary-custom mb-3">₱0 / month</p>
@@ -392,6 +397,7 @@
                 </button>
             </div>
 
+            <!-- Premium Tier -->
             <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-primary-custom text-left flex flex-col scale-[1.05]">
                 <span class="bg-primary-custom text-white text-xs font-bold px-3 py-1 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-md">BEST VALUE</span>
                 <h2 class="text-2xl font-bold mb-4 text-gray-800">Premium</h2>
@@ -409,6 +415,7 @@
                 </button>
             </div>
 
+            <!-- Annual Tier -->
             <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-custom/50 text-left flex flex-col">
                 <h2 class="text-2xl font-bold mb-4 text-gray-800">Annual</h2>
                 <p class="text-5xl font-extrabold text-primary-custom mb-3">₱5,999 / year</p>
@@ -422,8 +429,14 @@
                 <button class="w-full py-3 border border-primary-custom text-primary-custom font-semibold rounded-full hover:bg-primary-custom/10 transition duration-300">
                     Get Annual Plan
                 </button>
+            </div>
         </div>
-</div><div id="faq-page" class="page-content py-8 sm:py-12" style="display: none;">
+    </div>
+</div><!-- End of #pricing-page -->
+<!-- ------------------------------------------------------------------- -->
+<!-- 5. FAQ/RESOURCES PAGE (Interactive Content for Footer Link) -->
+<!-- ------------------------------------------------------------------- -->
+<div id="faq-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Resources: FAQ & Policies</h1>
         <p class="text-xl text-gray-600 mb-10">
@@ -451,8 +464,13 @@
             <p id="terms"><strong>Terms of Service:</strong> Details the rules governing the use of the GlowBot application and services.</p>
             <p id="privacy"><strong>Privacy Policy:</strong> Explains how we collect, use, and protect your personal data, emphasizing our commitment to encryption and user control.</p>
             <p><strong>Legal Disclaimer:</strong> GlowBot provides suggestions and informational guidance, and is <strong>not a substitute for professional medical advice</strong>.</p>
+        </div>
     </div>
-</div></main> 
+</div><!-- End of #faq-page -->
+        </main> 
+        <!-- The closing </main> tag is directly below the pages -->
+
+        <!-- Footer -->
         <footer id="contact" class="bg-gray-900 mt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
@@ -497,39 +515,27 @@
    <script>
     const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
-    // CRITICAL FIX: The key was missing. You MUST replace "YOUR_API_KEY_HERE" with your actual Google AI API Key for the Ingredient Decoder to work.
-    const API_KEY = "YOUR_API_KEY_HERE"; 
+    const API_KEY = ""; // injected at runtime
 
     // --- UNIFIED showPage FUNCTION ---
- function showPage(pageId, anchorId = null) {
-    document.querySelectorAll('.page-content').forEach(page => {
-        // Hide all pages by setting display: none
-        page.style.display = 'none';
-        page.classList.remove('active');
-    });
+    function showPage(pageId, anchorId = null) {
+        document.querySelectorAll('.page-content').forEach(page => {
+            page.classList.remove('active');
+        });
 
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        // Show only the target page and add the active class
-        targetPage.style.display = 'block';
-        targetPage.classList.add('active');
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) targetPage.classList.add('active');
+
+        setTimeout(() => {
+            if (anchorId) {
+                const el = document.querySelector(anchorId);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 80);
     }
 
-    setTimeout(() => {
-        const header = document.querySelector('header');
-        const offset = header ? header.offsetHeight : 0;
-
-        if (anchorId) {
-            const el = document.querySelector(anchorId);
-            if (el) {
-                const y = el.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        } else {
-            window.scrollTo({ top: offset, behavior: 'smooth' });
-        }
-    }, 80);
-}
     // --- GEMINI INGREDIENT DECODER ---
     async function generateIngredientInfo() {
         const input = document.getElementById('ingredientPrompt');
@@ -540,12 +546,6 @@
         if (!ingredient) {
             output.innerHTML = '<span class="text-red-500">Please enter an ingredient name.</span>';
             return;
-        }
-        
-        // CHECK FOR API KEY
-        if (API_KEY === "YOUR_API_KEY_HERE" || API_KEY === "") {
-             output.innerHTML = "<span class='text-red-500'>ERROR: API Key is missing. Please insert your actual Google AI API Key in the script tag to enable this feature.</span>";
-             return;
         }
 
         loading.classList.remove('hidden');
@@ -564,7 +564,7 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-            
+
             const data = await res.json();
             const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
@@ -586,8 +586,10 @@
         if (ingredientBtn) {
             ingredientBtn.addEventListener("click", generateIngredientInfo);
         }
-        
-        // Removed original JS initialization as the display is now guaranteed via inline styles/CSS.
+
+        // default home page
+        const homePage = document.getElementById("home-page");
+        if (homePage) homePage.classList.add("active");
     }
 
     window.onload = initializeApp;
