@@ -560,29 +560,78 @@
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
             }
+// --- START OF NEW JAVASCRIPT BLOCK ---
 
-            // Add event listener for Gemini feature
-            if (generateIngredientBtn) {
-                generateIngredientBtn.addEventListener('click', generateIngredientInfo);
-            }
-            
-            // --- Firebase Placeholder for Runtime Environment ---
-            const firebaseSetup = async () => {
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-                const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+/**
+ * Handles navigation, ensuring the correct page is shown and optionally scrolls
+ * to a specific element ID (anchor) on that page.
+ * @param {string} pageId - The ID of the page div to show (e.g., 'faq-page').
+ * @param {string} [anchorId] - The ID of the element to scroll to (e.g., '#terms').
+ */
+function showPage(pageId, anchorId) {
+    // 1. Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.remove('active'));
 
-                if (firebaseConfig) {
-                    console.log(`Firebase Config loaded for App ID: ${appId}`);
-                } else {
-                    console.log("Running in standalone mode (no Firebase config found).");
+    // 2. Show the requested page
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.classList.add('active');
+
+        // 3. Handle scrolling if an anchor is provided
+        if (anchorId) {
+            // Wait a brief moment for the page to render fully
+            setTimeout(() => {
+                const targetElement = document.getElementById(anchorId.replace('#', ''));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
                 }
-            };
-            
-            firebaseSetup();
+            }, 50); // Small delay to ensure smooth transition
+        } else {
+            // If no anchor, scroll to the top of the newly displayed page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
+    }
+}
 
-        window.onload = initializeApp;
+function initializeApp() {
+    // 1. Set current year in footer (if element exists)
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // 2. Ensure the home page is active on load
+    const homePage = document.getElementById('home-page');
+    if (homePage) {
+        homePage.classList.add('active');
+    }
+
+    // 3. Handle Firebase (Placeholder)
+    const firebaseSetup = async () => {
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        if (firebaseConfig) {
+            console.log(`Firebase Config loaded for App ID: ${appId}`);
+        } else {
+            console.log("Running in standalone mode (no Firebase config found).");
+        }
+    };
+    
+    firebaseSetup();
+}
+
+window.onload = initializeApp;
+
+// --- END OF NEW JAVASCRIPT BLOCK ---
     </script>
 </body>
 </html>
