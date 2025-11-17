@@ -623,78 +623,151 @@
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
             }
-// --- START OF NEW JAVASCRIPT BLOCK ---
+<script>
+    const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+    const API_KEY = ""; // Kept blank for runtime injection in this environment
 
-/**
- * Handles navigation, ensuring the correct page is shown and optionally scrolls
- * to a specific element ID (anchor) on that page.
- * @param {string} pageId - The ID of the page div to show (e.g., 'faq-page').
- * @param {string} [anchorId] - The ID of the element to scroll to (e.g., '#terms').
- */
-function showPage(pageId, anchorId) {
-    // 1. Hide all pages
-    const pages = document.querySelectorAll('.page-content');
-    pages.forEach(page => page.classList.remove('active'));
+    /**
+     * Handles navigation, ensuring the correct page is shown and optionally scrolls
+     * to a specific element ID (anchor) on that page.
+     * @param {string} pageId - The ID of the page div to show (e.g., 'faq-page').
+     * @param {string} [anchorId] - Optional ID of an element to scroll to on the page.
+     */
+    function showPage(pageId, anchorId = null) {
+        // 1. Hide all pages
+        const pages = document.querySelectorAll('.page-content');
+        pages.forEach(page => page.classList.remove('active'));
 
-    // 2. Show the requested page
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.add('active');
+        // 2. Show the requested page
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
 
         // 3. Handle scrolling if an anchor is provided
-        if (anchorId) {
-            // Wait a brief moment for the page to render fully
-            setTimeout(() => {
-                const targetElement = document.getElementById(anchorId.replace('#', ''));
-                if (targetElement) {
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
+        setTimeout(() => {
+            if (anchorId) {
+                // Remove '#' if present, then find the element
+                const anchorElement = document.getElementById(anchorId.replace('#', ''));
+                if (anchorElement) {
+                    anchorElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 50); // Small delay to ensure smooth transition
-        } else {
-            // If no anchor, scroll to the top of the newly displayed page
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            } else {
+                // If no anchor, scroll to the top of the newly displayed page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 100); // Small delay to ensure smooth transition after page switch
+    }
+
+    /**
+     * Calls the Gemini API to get ingredient information.
+     */
+    async function generateIngredientInfo() {
+        const promptInput = document.getElementById('ingredientPrompt');
+        const outputDiv = document.getElementById('ingredientOutput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const generateIngredientBtn = document.getElementById('generateIngredientBtn');
+        const ingredient = promptInput.value.trim();
+
+        if (!ingredient) {
+            outputDiv.innerHTML = '<span class="text-red-500">Please enter an ingredient name.</span>';
+            return;
+        }
+        
+        const systemPrompt = "You are a friendly, expert, and empowering skincare analyst (GlowBot). Provide a concise, single-paragraph explanation of the benefits and purpose of the requested skincare ingredient. Use simple, non-medical language.";
+        const userQuery = `What are the benefits and purpose of the skincare ingredient: ${ingredient}?`;
+        
+        outputDiv.textContent = '';
+        loadingIndicator.classList.remove('hidden');
+        generateIngredientBtn.disabled = true; // Disable button during call
+
+        const payload = {
+            contents: [{ parts: [{ text: userQuery }] }],
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            },
+        };
+
+        const url = `${API_URL}?key=${API_KEY}`;
+
+        try {
+            let response;
+            const maxRetries = 5;
+            for (let i = 0; i < maxRetries; i++) {
+                response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.status !== 429) { // 429 is Too Many Requests
+                    break;
+                }
+                const delay = Math.pow(2, i) * 1000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (text) {
+                outputDiv.textContent = text;
+            } else {
+                outputDiv.innerHTML = '<span class="text-red-500">Sorry, the AI could not generate information for that ingredient.</span>';
+            }
+
+        } catch (error) {
+            console.error("Gemini API Error:", error);
+            outputDiv.innerHTML = `<span class="text-red-500">Error decoding ingredient. Please check console for details.</span>`;
+        } finally {
+            loadingIndicator.classList.add('hidden');
+            generateIngredientBtn.disabled = false; // Re-enable button
         }
     }
-}
-
-function initializeApp() {
-    // 1. Set current year in footer (if element exists)
-    const currentYearElement = document.getElementById('current-year');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
     
-    // 2. Ensure the home page is active on load
-    const homePage = document.getElementById('home-page');
-    if (homePage) {
-        homePage.classList.add('active');
-    }
+    function initializeApp() {
+        const currentYearElement = document.getElementById('current-year');
+        const generateIngredientBtn = document.getElementById('generateIngredientBtn');
 
-    // 3. Handle Firebase (Placeholder)
-    const firebaseSetup = async () => {
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        if (firebaseConfig) {
-            console.log(`Firebase Config loaded for App ID: ${appId}`);
-        } else {
-            console.log("Running in standalone mode (no Firebase config found).");
+        // Set current year in footer
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
         }
-    };
-    
-    firebaseSetup();
-}
 
-window.onload = initializeApp;
+        // Attach event listener for Gemini feature
+        if (generateIngredientBtn) {
+            generateIngredientBtn.addEventListener('click', generateIngredientInfo);
+        }
 
-// --- END OF NEW JAVASCRIPT BLOCK ---
+        // Ensure the home page is active on load
+        const homePage = document.getElementById('home-page');
+        if (homePage) {
+            homePage.classList.add('active');
+        }
+
+        // Handle Firebase (Placeholder)
+        const firebaseSetup = async () => {
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+            const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+            if (firebaseConfig) {
+                console.log(`Firebase Config loaded for App ID: ${appId}`);
+            } else {
+                console.log("Running in standalone mode (no Firebase config found).");
+            }
+        };
+        
+        firebaseSetup();
+    }
+
+    window.onload = initializeApp;
+</script>
     </script>
 </body>
 </html>
