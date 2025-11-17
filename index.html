@@ -572,11 +572,13 @@
     </div>
 
    <script>
+ <script>
     const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+    // REMINDER: YOU STILL NEED TO PASTE YOUR API KEY HERE
     const API_KEY = ""; // injected at runtime
 
-    // --- UNIFIED showPage FUNCTION ---
+    // --- (FIXED) UNIFIED showPage FUNCTION ---
     function showPage(pageId, anchorId = null) {
         document.querySelectorAll('.page-content').forEach(page => {
             page.classList.remove('active');
@@ -585,13 +587,33 @@
         const targetPage = document.getElementById(pageId);
         if (targetPage) targetPage.classList.add('active');
 
+        // This 80ms timeout gives the browser time to render the new page
+        // before we try to scroll on it.
         setTimeout(() => {
+            // Find the sticky header
+            const header = document.querySelector('header');
+            // Get its height (or 0 if it's not found)
+            const headerHeight = header ? header.offsetHeight : 0;
+
+            let scrollToY = headerHeight; // Default: scroll to just below the header
+
             if (anchorId) {
+                // If we have an anchor (like #features)
                 const el = document.querySelector(anchorId);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (el) {
+                    // Get the element's top position
+                    const elementTop = el.getBoundingClientRect().top;
+                    // Get the window's current scroll position
+                    const windowY = window.scrollY;
+                    // Calculate final position: current scroll + element position - header height
+                    // We add a small 10px buffer for padding.
+                    scrollToY = windowY + elementTop - headerHeight - 10;
+                }
             }
+            
+            // Scroll to the calculated position
+            window.scrollTo({ top: scrollToY, behavior: 'smooth' });
+
         }, 80);
     }
 
@@ -601,6 +623,11 @@
         const output = document.getElementById('ingredientOutput');
         const loading = document.getElementById('loadingIndicator');
         const ingredient = input.value.trim();
+
+        if (API_KEY === "") {
+             output.innerHTML = "<span class='text-red-500'>ERROR: API Key is missing. Please insert your actual Google AI API Key in the script tag to enable this feature.</span>";
+             return;
+        }
 
         if (!ingredient) {
             output.innerHTML = '<span class="text-red-500">Please enter an ingredient name.</span>';
