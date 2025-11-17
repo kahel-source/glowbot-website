@@ -574,11 +574,9 @@
     const API_KEY = ""; // injected at runtime
 
     /**
-     * --- (FINAL VERSION) UNIFIED showPage FUNCTION ---
-     * - Uses your original "active" class logic to switch pages.
-     * - If the link has an anchor (like #features), it scrolls to that anchor.
-     * - If the link does NOT have an anchor (like footer links),
-     * it scrolls to the MIDDLE of the new page.
+     * --- (FINAL, SIMPLIFIED FIX) ---
+     * This script uses your original "active" class logic.
+     * It uses a more reliable way to scroll after the page switches.
      */
     function showPage(pageId, anchorId = null) {
         
@@ -592,48 +590,36 @@
             targetPage.classList.add('active');
         }
 
-        // 2. THE NEW SCROLLING LOGIC
-        setTimeout(() => {
-            // Find the sticky header
-            const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 0;
-            
-            let scrollToY; // We will calculate this
+        // 2. THE NEW, RELIABLE SCROLLING LOGIC
+        // This waits for the browser to be ready to render the page
+        // before trying to scroll.
+        requestAnimationFrame(() => {
+            // We wait one more frame just to be extra sure the layout is ready
+            requestAnimationFrame(() => {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                
+                let scrollToY;
 
-            if (anchorId) {
-                // --- A: Link HAS an anchor (like #features) ---
-                // We scroll to that specific element
-                const el = document.querySelector(anchorId);
-                if (el) {
-                    const elementTop = el.getBoundingClientRect().top + window.scrollY;
-                    scrollToY = elementTop - headerHeight - 10; // Scroll to element
+                if (anchorId) {
+                    // --- A: Link HAS an anchor (like #features) ---
+                    // We scroll to that specific element, minus the header
+                    const el = document.querySelector(anchorId);
+                    if (el) {
+                        const elementTop = el.getBoundingClientRect().top + window.scrollY;
+                        scrollToY = elementTop - headerHeight - 10; // Scroll to element
+                    } else {
+                        scrollToY = headerHeight; // Fallback
+                    }
                 } else {
-                    scrollToY = headerHeight; // Fallback just in case
+                    // --- B: Link does NOT have an anchor (footer links) ---
+                    // We scroll to JUST BELOW THE HEADER. This fixes the "gap".
+                    scrollToY = headerHeight;
                 }
-            } else {
-                // --- B: Link does NOT have an anchor (like footer links) ---
-                // We scroll to the MIDDLE of the new page
                 
-                // 1. Get the heights
-                const viewportHeight = window.innerHeight;
-                const contentHeight = targetPage.offsetHeight;
-                
-                // 2. Find the center of the new content
-                //    (Starts after header + half the content's height)
-                const contentCenter = headerHeight + (contentHeight / 2);
-                
-                // 3. Calculate where to scroll to put that center
-                //    in the middle of the viewport
-                const newY = contentCenter - (viewportHeight / 2);
-
-                // 4. Make sure we don't scroll up past the header
-                scrollToY = Math.max(headerHeight, newY);
-            }
-            
-            // This one scroll command handles both cases
-            window.scrollTo({ top: scrollToY, behavior: 'smooth' });
-
-        }, 80);
+                window.scrollTo({ top: scrollToY, behavior: 'smooth' });
+            });
+        });
     }
 
     // --- GEMINI INGREDIENT DECODER ---
