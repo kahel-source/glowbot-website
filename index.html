@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         /* ------------------------------------------------------------------- */
-        /* Custom CSS Variables & Utility Classes for Static Theming */
-        /* ------------------------------------------------------------------- */
-        :root {
-            /* Static brand color: Green/Aqua */
-            --color-primary: 34 197 94; /* RGB for Tailwind's green-500 */
-            --color-accent: 255 255 255; /* White background */
-            --color-dark: 23 23 23;      /* Near black text */
-        }
+/* Custom CSS Variables & Utility Classes for Static Theming */
+/* ------------------------------------------------------------------- */
+:root {
+    /* Static brand color: Soft Aqua (#6DDAD3) */
+    --color-primary: 109 218 211; /* RGB for Soft Aqua */
+    --color-accent: 255 255 255; /* Pure White */
+    --color-dark: 23 23 23;      /* Near black text */
+}
 
         /* Generic classes using the variable for easy application */
         .bg-primary-custom { background-color: rgb(var(--color-primary)); }
@@ -222,64 +222,32 @@
                     </div>
                 </section>
                 
-                <!-- Mission & Vision Section (New) -->
-                <section id="mission" class="py-20 bg-white">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="bg-gray-50 rounded-2xl p-10 shadow-lg border-t-4 border-primary-custom flex flex-col md:flex-row gap-8">
-                            <div class="md:w-1/2">
-                                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Core Mission</h2>
-                                <p class="text-lg text-gray-700">
-                                    "To empower individuals with personalized, science-backed skincare guidance through advanced AI technology."
-                                </p>
-                                <p class="mt-4 text-sm text-gray-500">
-                                    Our vision is to become the global leader in AI-driven skincare innovation and accessible dermatology insights.
-                                </p>
-                            </div>
-                            <div class="md:w-1/2">
-                                <h2 class="text-3xl font-bold text-gray-800 mb-4">Brand Personality</h2>
-                                <p class="text-lg text-gray-700">
-                                    GlowBot is **friendly, expert, and empowering.** Our identity blends modern technology with clean, calming aesthetics and an intuitive UI to inspire confidence and clarity in your skincare journey.
-                                </p>
-                                <a href="#cta" class="mt-4 inline-flex items-center text-primary-custom font-semibold hover:underline" onclick="showPage('home-page', '#cta')">
-                                    Start Your Journey Today &rarr;
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+               <!-- Mission & Vision Section (New) -->
+<section id="mission" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gray-50 rounded-2xl p-10 shadow-lg border-t-4 border-primary-custom flex flex-col md:flex-row gap-8">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Core Mission</h2>
+                <p class="text-lg text-gray-700">
+                    To empower every individual with <strong>personalized, science-backed skincare guidance</strong> through advanced AI technology.
+                </p>
+                <p class="mt-4 text-sm text-gray-500">
+                    Our Mission: To make expert-level skin analysis accessible to everyone by providing accurate assessments, tailored routines, and continuous progress tracking.
+                </p>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Vision</h2>
+                <p class="text-lg text-gray-700">
+                    GlowBot envisions becoming the <strong>world's leading AI skincare platform,</strong> transforming the way people understand and care for their skin. We bridge the gap between technology and dermatology by delivering accessible, data-driven insights.
+                </p>
+                <p class="mt-4 text-sm text-gray-500">
+                    Brand Personality: GlowBot is <strong>friendly, expert, and empowering.</strong> Our identity blends modern technology with clean, calming aesthetics and an intuitive UI to inspire confidence and clarity in your skincare journey.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
                 
-                <!-- Problem & Solution Section (Mission/Ethos) -->
-                <section id="problem" class="py-20 bg-primary-custom/5">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="lg:flex lg:items-center lg:justify-between">
-                            <div class="lg:w-5/12 mb-10 lg:mb-0">
-                                <h2 class="text-4xl font-extrabold mb-6 text-gray-800">The Problem: High Cost, High Time</h2>
-                                <p class="text-lg text-gray-600 mb-4">
-                                    Traditional dermatology visits are costly, not just financially, but in time. Patients often take **4+ hours off work** for a single appointment, resulting in significant opportunity costs (as high as **₱8,515.86**).
-                                </p>
-                                <p class="text-lg font-semibold text-gray-800">
-                                    **GlowBot solves the growing need for affordable, accurate, and accessible skincare guidance.**
-                                </p>
-                                <a href="#cta" class="mt-6 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary-custom hover:bg-primary-darker transition duration-300">
-                                    Skip the Clinic, Start Glowing
-                                </a>
-                            </div>
-                            <div class="lg:w-6/12 flex justify-center">
-                                <!-- Visual of a clock and dollar sign being crossed out -->
-                                <div class="w-80 h-80 bg-white rounded-2xl shadow-2xl flex items-center justify-center p-8">
-                                    <svg class="w-full h-full text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
-                                        <path d="M16 16l-8-8"></path>
-                                        <path d="M8 16l8-8"></path>
-                                        <path d="M12 8v4l2 2"></path>
-                                        <path class="fill-primary-custom" d="M15 5h-2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2v1h-3v2h3v2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-2v-1h3V9h-3V7c0-1.1-.9-2-2-2z" fill="rgb(var(--color-primary))" stroke="none" opacity="0.1"></path>
-                                        <text x="12" y="12" font-family="Inter, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" alignment-baseline="central" fill="rgb(var(--color-primary))">$ & T</text>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
                 
                 <!-- Call to Action Section -->
                 <section id="cta" class="py-20">
@@ -372,6 +340,57 @@
     </div>
 </div><!-- End of #education-page -->
          <!-- ------------------------------------------------------------------- -->
+            <!-- ------------------------------------------------------------------- -->
+<!-- 4. ENCOURAGEMENT PAGE (Interactive Content for Footer Link) -->
+<!-- ------------------------------------------------------------------- -->
+<div id="encouragement-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Encouragement</h1>
+        <p class="text-xl text-gray-600 mb-10">
+            The Encouragement phase is designed to drive conversion by leveraging social proof, success stories, and exciting challenges to inspire confidence and prompt immediate action.
+        </p>
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Real Results: Before & After Proof</h2>
+        <div class="bg-white p-8 rounded-xl shadow-2xl border border-primary-custom/50 flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/2">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">See the Transformation (Campaign Photo 8)</h3>
+                <p class="text-gray-600 mb-4">GlowBot enables visual proof of your progress. Our weekly tracking system lets you compare your starting point to your current skin health—no guesswork, just data.</p>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li><strong>Goal:</strong> Foster confidence in the app's efficacy.</li>
+                    <li><strong>Action:</strong> Drive users to the download page.</li>
+                </ul>
+            </div>
+           <div class="md:w-1/2 w-full">
+    <img 
+        src="https://github.com/kahel-source/glowbot-website/blob/main/Campaign%20Photo%208.jpg?raw=true" 
+        alt="GlowBot Before and After Progress Photo" 
+        class="w-full rounded-lg shadow-xl"
+        onerror="this.onerror=null; this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Campaign+Photo+8';">
+</div>
+            </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12">Join the #GlowWithGlowBot Challenge</h2>
+        <div class="bg-primary-custom/10 p-8 rounded-xl border border-primary-custom">
+            <p class="text-lg font-semibold text-gray-800 mb-4">Post your bare-skin selfie and tag us to win a premium annual subscription!</p>
+            <p class="text-gray-600">This user-generated content (UGC) strategy boosts interaction and builds community. We're looking for honest, authentic skin journeys—the real Glow-Up!</p>
+            <a href="#cta" class="mt-4 inline-flex items-center text-primary-custom font-semibold hover:underline" onclick="showPage('home-page', '#cta')">
+                View Challenge Details &rarr;
+            </a>
+        </div>
+        
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12">Key Content (Dec 9th - 10th)</h2>
+        <div class="space-y-4">
+            <div class="p-4 border-l-4 border-primary-custom bg-white shadow-md rounded-lg">
+                <p class="font-semibold text-gray-800">Dec 9th: Join the Glow-Up with GlowBot (Campaign Photo 7)</p>
+            </div>
+            <div class="p-4 border-l-4 border-primary-custom bg-white shadow-md rounded-lg">
+                <p class="font-semibold text-gray-800">Dec 10th: Before and After Using GlowBot (Campaign Photo 8)</p>
+            </div>
+        </div>
+
+    </div>
+</div><!-- End of #encouragement-page -->
             <!-- ------------------------------------------------------------------- -->
 <!-- 2. PRICING & PLANS PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
