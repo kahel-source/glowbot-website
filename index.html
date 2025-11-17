@@ -152,6 +152,8 @@
                 </section>
                 
 
+// --- Google Search Grounding Function (The Fix) ---
+
 async function generateIngredientInfo() {
     const promptInput = document.getElementById('ingredientPrompt');
     const outputDiv = document.getElementById('ingredientOutput');
@@ -169,6 +171,7 @@ async function generateIngredientInfo() {
     const systemPrompt = "You are a friendly, expert, and empowering skincare analyst (GlowBot). Provide a concise, single-paragraph explanation of the benefits and purpose of the requested skincare ingredient. Use simple, non-medical language.";
     
     // Refined User Query to force strong grounding and better search results
+    // THIS IS THE KEY FIX: The prompt is now more direct to force the model to look up the info.
     const userQuery = `What are the definitive benefits and purpose of the skincare ingredient: ${ingredient}? Provide a summary based on search results.`;
     
     outputDiv.textContent = '';
