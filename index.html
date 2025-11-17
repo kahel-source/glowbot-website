@@ -574,24 +574,29 @@
     const API_KEY = ""; // injected at runtime
 
     // --- UNIFIED showPage FUNCTION ---
-    function showPage(pageId, anchorId = null) {
-        document.querySelectorAll('.page-content').forEach(page => {
-            page.classList.remove('active');
-        });
+ function showPage(pageId, anchorId = null) {
+    document.querySelectorAll('.page-content').forEach(page => {
+        page.classList.remove('active');
+    });
 
-        const targetPage = document.getElementById(pageId);
-        if (targetPage) targetPage.classList.add('active');
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.add('active');
 
-        setTimeout(() => {
-            if (anchorId) {
-                const el = document.querySelector(anchorId);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+        const header = document.querySelector('header');
+        const offset = header ? header.offsetHeight : 0;
+
+        if (anchorId) {
+            const el = document.querySelector(anchorId);
+            if (el) {
+                const y = el.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
-        }, 80);
-    }
-
+        } else {
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+    }, 80);
+}
     // --- GEMINI INGREDIENT DECODER ---
     async function generateIngredientInfo() {
         const input = document.getElementById('ingredientPrompt');
