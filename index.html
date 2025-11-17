@@ -334,6 +334,7 @@
                 </div>
             </div><!-- End of #awareness-page -->
 <!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 <!-- 3. EDUCATION PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
 <div id="education-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -371,6 +372,7 @@
     </div>
 </div><!-- End of #education-page -->
          <!-- ------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 <!-- 5. FAQ/RESOURCES PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
 <div id="faq-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -380,7 +382,7 @@
             Find answers to common questions and review our commitment to your privacy and security.
         </p>
 
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Frequently Asked Questions</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8" id="faq-section">Frequently Asked Questions</h2>
         <div class="space-y-4">
             <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-custom">
                 <h3 class="text-xl font-semibold mb-2 text-gray-800">Is GlowBot really free?</h3>
@@ -396,10 +398,10 @@
             </div>
         </div>
 
-        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12">Policies and Terms</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-12" id="policies">Policies and Terms</h2>
         <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200 text-gray-700 space-y-3">
-            <p><strong>Terms of Service:</strong> Details the rules governing the use of the GlowBot application and services.</p>
-            <p><strong>Privacy Policy:</strong> Explains how we collect, use, and protect your personal data, emphasizing our commitment to encryption and user control.</p>
+            <p id="terms"><strong>Terms of Service:</strong> Details the rules governing the use of the GlowBot application and services.</p>
+            <p id="privacy"><strong>Privacy Policy:</strong> Explains how we collect, use, and protect your personal data, emphasizing our commitment to encryption and user control.</p>
             <p><strong>Legal Disclaimer:</strong> GlowBot provides suggestions and informational guidance, and is <strong>not a substitute for professional medical advice</strong>.</p>
         </div>
     </div>
@@ -425,12 +427,12 @@
                     </div>
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Resources</h4>
-                        <ul class="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" onclick="showPage('pricing-page')" class="hover:text-primary-custom">Pricing & Plans</a></li>
-                            <li><a href="#" onclick="showPage('faq-page')" class="hover:text-primary-custom">FAQ & Help</a></li>
-                           <li><a href="#" onclick="showPage('faq-page')" class="hover:text-primary-custom">Terms of Service</a></li>
-                            <li><a href="#" onclick="showPage('faq-page')" class="hover:text-primary-custom">Privacy Policy</a></li>
-                        </ul>
+<ul class="space-y-2 text-sm text-gray-400">
+    <li><a href="#" onclick="showPage('pricing-page')" class="hover:text-primary-custom">Pricing & Plans</a></li>
+    <li><a href="#" onclick="showPage('faq-page', '#faq-section')" class="hover:text-primary-custom">FAQ & Help</a></li>
+    <li><a href="#" onclick="showPage('faq-page', '#terms')" class="hover:text-primary-custom">Terms of Service</a></li>
+    <li><a href="#" onclick="showPage('faq-page', '#privacy')" class="hover:text-primary-custom">Privacy Policy</a></li>
+</ul>
                     </div>
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Connect</h4>
