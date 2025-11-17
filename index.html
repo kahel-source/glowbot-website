@@ -151,31 +151,33 @@
                     </div>
                 </section>
                 
-                <!-- NEW GEMINI FEATURE: Ingredient Intelligence Decoder -->
-                <section id="ingredient-decoder" class="py-16 bg-white">
-                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">✨ Ingredient Intelligence Decoder (Gemini AI Demo)</h2>
-                        <p class="text-lg text-gray-600 mb-8 text-center">
-                            Demystify confusing ingredients instantly. Get a simple, expert-level explanation powered by Gemini.
-                        </p>
 
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-primary-custom/30">
-                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                                <input type="text" id="ingredientPrompt" value="Niacinamide" placeholder="Enter ingredient name (e.g., Retinol)" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-custom focus:border-primary-custom">
-                                <button id="generateIngredientBtn" class="bg-primary-custom text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-darker transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                                    Decode Ingredient
-                                </button>
-                            </div>
-                            
-                            <div id="ingredientOutput" class="mt-6 p-4 min-h-[100px] bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
-                                Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
-                            </div>
-                            <div id="loadingIndicator" class="hidden mt-4 text-center text-primary-custom font-medium">
-                                Analyzing ingredient...
-                            </div>
-                        </div>
-                    </div>
-                </section>
+<!-- NEW GEMINI FEATURE: Ingredient Intelligence Decoder (Google Search Grounding) -->
+<section id="ingredient-decoder" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">✨ Ingredient Intelligence Decoder</h2>
+        <p class="text-lg text-gray-600 mb-8 text-center">
+            Demystify confusing ingredients instantly. Get a simple, scientifically-backed explanation using Google Search.
+        </p>
+
+        <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-primary-custom/30">
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                <input type="text" id="ingredientPrompt" value="Niacinamide" placeholder="Enter ingredient name (e.g., Retinol)" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-custom focus:border-primary-custom">
+                <button id="generateIngredientBtn" class="bg-primary-custom text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-darker transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                    Decode Ingredient
+                </button>
+            </div>
+            
+            <div id="ingredientOutput" class="mt-6 p-4 min-h-[100px] bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
+                Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
+            </div>
+            <div id="loadingIndicator" class="hidden mt-4 text-center text-primary-custom font-medium">
+                Analyzing ingredient...
+            </div>
+            <div id="citationOutput" class="mt-4 text-xs text-gray-500 text-left"></div>
+        </div>
+    </div>
+</section>
 
                 <!-- Key Features Section (Product Showcase) -->
                 <section id="features" class="py-20 bg-gray-50/50">
@@ -268,7 +270,7 @@
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Campaign Focus: Awareness</h1>
                     <p class="text-xl text-gray-600 mb-10">
-                        The Awareness phase establishes <strong>GlowBot's brand identity, purpose, and core benefits.</strong>strong> Our goal is to capture curiosity and ensure Millennials and Gen Z recognize GlowBot as an innovative AI-powered solution.
+                        The Awareness phase establishes <strong>GlowBot's brand identity, purpose, and core benefits.</strong> Our goal is to capture curiosity and ensure Millennials and Gen Z recognize GlowBot as an innovative AI-powered solution.
                     </p>
 
 <h2 class="text-3xl font-bold text-gray-800 mb-4 mt-8">Key Content </h2>
@@ -394,14 +396,14 @@
                 <h3 class="text-2xl font-semibold text-gray-800 mb-3">Join the #GlowWithGlowBot Challenge</h3>
                 <p class="text-gray-600 mb-4">Post your bare-skin selfie and tag us to win a premium annual subscription!</p>
                 <ul class="space-y-2 text-sm text-gray-700">
-                    <li><strong>This user-generated content (UGC) strategy</strong> boosts interaction and builds community. .</li>
+                    <li>This <strong>User-generated content (UGC) strategy</strong> boosts interaction and builds community. .</li>
                     <li>We're looking for <strong>honest, authentic skin journeys</strong>—the real Glow-Up.</li>
                 </ul>
             </div>
            <div class="md:w-1/2 w-full">
     <img 
         src="https://github.com/kahel-source/glowbot-website/blob/main/4C.jpg?raw=true" 
-        alt="GlowBot Before and After Progress Photo" 
+        alt="GlowWithGlowBot Challenge" 
         class="w-full rounded-lg shadow-xl"
         onerror="this.onerror=null; this.src='https://placehold.co/600x400/22C55E/FFFFFF?text=Campaign+Photo+8';">
         </div>
