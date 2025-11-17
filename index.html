@@ -568,21 +568,21 @@
     </div>
 
 <script>
-   <script>
     const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
     // REMINDER: YOU STILL NEED TO PASTE YOUR API KEY HERE
     const API_KEY = ""; // injected at runtime
 
     /**
-     * --- (FIXED) UNIFIED showPage FUNCTION ---
-     * This function uses the "active" class to show/hide pages,
-     * just like your original file. It now has the
-     * correct scrolling logic that accounts for the sticky header.
+     * --- (FINAL VERSION) UNIFIED showPage FUNCTION ---
+     * - Uses your original "active" class logic to switch pages.
+     * - If the link has an anchor (like #features), it scrolls to that anchor.
+     * - If the link does NOT have an anchor (like footer links),
+     * it scrolls to the MIDDLE of the new page.
      */
     function showPage(pageId, anchorId = null) {
         
-        // 1. This is your original, working page-switching logic
+        // 1. YOUR ORIGINAL PAGE-SWITCHING LOGIC (IT'S CORRECT)
         document.querySelectorAll('.page-content').forEach(page => {
             page.classList.remove('active');
         });
@@ -592,31 +592,45 @@
             targetPage.classList.add('active');
         }
 
-        // 2. This is the new, fixed scrolling logic
-        // This 80ms timeout gives the browser time to render
-        // the new page before we try to calculate its height.
+        // 2. THE NEW SCROLLING LOGIC
         setTimeout(() => {
             // Find the sticky header
             const header = document.querySelector('header');
-            // Get its height (or 0 if it's not found)
             const headerHeight = header ? header.offsetHeight : 0;
-
-            // Default: scroll to just below the header
-            // This fixes the "gap" when clicking footer links.
-            let scrollToY = headerHeight; 
+            
+            let scrollToY; // We will calculate this
 
             if (anchorId) {
-                // This fixes the header covering content
+                // --- A: Link HAS an anchor (like #features) ---
+                // We scroll to that specific element
                 const el = document.querySelector(anchorId);
                 if (el) {
-                    // Get the element's top position relative to the document
                     const elementTop = el.getBoundingClientRect().top + window.scrollY;
-                    // Subtract the header height and a small buffer
-                    scrollToY = elementTop - headerHeight - 10;
+                    scrollToY = elementTop - headerHeight - 10; // Scroll to element
+                } else {
+                    scrollToY = headerHeight; // Fallback just in case
                 }
+            } else {
+                // --- B: Link does NOT have an anchor (like footer links) ---
+                // We scroll to the MIDDLE of the new page
+                
+                // 1. Get the heights
+                const viewportHeight = window.innerHeight;
+                const contentHeight = targetPage.offsetHeight;
+                
+                // 2. Find the center of the new content
+                //    (Starts after header + half the content's height)
+                const contentCenter = headerHeight + (contentHeight / 2);
+                
+                // 3. Calculate where to scroll to put that center
+                //    in the middle of the viewport
+                const newY = contentCenter - (viewportHeight / 2);
+
+                // 4. Make sure we don't scroll up past the header
+                scrollToY = Math.max(headerHeight, newY);
             }
             
-            // Scroll to the calculated position
+            // This one scroll command handles both cases
             window.scrollTo({ top: scrollToY, behavior: 'smooth' });
 
         }, 80);
@@ -670,7 +684,7 @@
     }
 
     // --- CLEAN INITIALIZE FUNCTION ---
-    // (This is from your original file)
+    // (This is from your original file, it is correct)
     function initializeApp() {
         const year = document.getElementById('current-year');
         if (year) year.textContent = new Date().getFullYear();
