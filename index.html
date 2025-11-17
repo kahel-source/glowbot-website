@@ -572,30 +572,38 @@
     </div>
 
    <script>
- <script>
     const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
     // REMINDER: YOU STILL NEED TO PASTE YOUR API KEY HERE
     const API_KEY = ""; // injected at runtime
 
-    // --- (FIXED) UNIFIED showPage FUNCTION ---
+    // --- (DEFINITIVE FIX) UNIFIED showPage FUNCTION ---
     function showPage(pageId, anchorId = null) {
+        
+        // 1. Hide ALL page content sections by setting their style to 'none'
+        // This clears any "stuck" styles from previous fixes.
         document.querySelectorAll('.page-content').forEach(page => {
+            page.style.display = 'none';
             page.classList.remove('active');
         });
 
+        // 2. Show ONLY the target page by setting its style to 'block'
         const targetPage = document.getElementById(pageId);
-        if (targetPage) targetPage.classList.add('active');
+        if (targetPage) {
+            targetPage.style.display = 'block';
+            targetPage.classList.add('active');
+        }
 
-        // This 80ms timeout gives the browser time to render the new page
-        // before we try to scroll on it.
+        // 3. This 80ms timeout gives the browser time to render the new page
+        //    before we try to calculate scrolling.
         setTimeout(() => {
             // Find the sticky header
             const header = document.querySelector('header');
             // Get its height (or 0 if it's not found)
             const headerHeight = header ? header.offsetHeight : 0;
 
-            let scrollToY = headerHeight; // Default: scroll to just below the header
+            // Default: scroll to just below the header
+            let scrollToY = headerHeight; 
 
             if (anchorId) {
                 // If we have an anchor (like #features)
@@ -673,9 +681,16 @@
             ingredientBtn.addEventListener("click", generateIngredientInfo);
         }
 
-        // default home page
-        const homePage = document.getElementById("home-page");
-        if (homePage) homePage.classList.add("active");
+        // On load, show the home page and hide all others.
+        // This replaces the old "active" class logic in the CSS.
+        document.querySelectorAll('.page-content').forEach(page => {
+            if (page.id === 'home-page') {
+                page.style.display = 'block';
+                page.classList.add('active');
+            } else {
+                page.style.display = 'none';
+            }
+        });
     }
 
     window.onload = initializeApp;
