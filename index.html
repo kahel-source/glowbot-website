@@ -302,10 +302,6 @@
              class="w-full max-w-sm mx-auto rounded-lg shadow-md mt-2" 
      onerror="this.onerror=null; this.src='https://placehold.co/400x200/6DDAD3/1E2D49?text=Placeholder';">
     </div>
-    
-    <div class="bg-primary-custom/10 p-6 rounded-xl border border-primary-custom">
-        <p class="font-semibold text-primary-custom">Primary Goal: Maximize reach and establish strong initial brand recognition across all channels.</p>
-    </div>
 </div>
                 </div>
             </div><!-- End of #awareness-page -->
@@ -571,31 +567,32 @@
 
     </div>
 
-   <script>
+<script>
     const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
     // REMINDER: YOU STILL NEED TO PASTE YOUR API KEY HERE
     const API_KEY = ""; // injected at runtime
 
-    // --- (DEFINITIVE FIX) UNIFIED showPage FUNCTION ---
+    /**
+     * --- (FIXED) UNIFIED showPage FUNCTION ---
+     * This function uses the "active" class to show/hide pages,
+     * just like your original file, so it won't conflict.
+     * It also includes the correct scrolling logic.
+     */
     function showPage(pageId, anchorId = null) {
-        
-        // 1. Hide ALL page content sections by setting their style to 'none'
-        // This clears any "stuck" styles from previous fixes.
+        // 1. Remove "active" class from all pages to hide them
         document.querySelectorAll('.page-content').forEach(page => {
-            page.style.display = 'none';
             page.classList.remove('active');
         });
 
-        // 2. Show ONLY the target page by setting its style to 'block'
+        // 2. Add "active" class to the target page to show it
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
-            targetPage.style.display = 'block';
             targetPage.classList.add('active');
         }
 
-        // 3. This 80ms timeout gives the browser time to render the new page
-        //    before we try to calculate scrolling.
+        // 3. This 80ms timeout gives the browser time to apply the 'active'
+        //    class and render the new page content before we try to scroll.
         setTimeout(() => {
             // Find the sticky header
             const header = document.querySelector('header');
@@ -660,7 +657,7 @@
             });
             
             const data = await res.json();
-            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            const text = data?.candidates?.[0]?.content?.parts?[0]?.text;
 
             output.textContent = text || "No information available.";
         } catch (err) {
@@ -671,7 +668,10 @@
         }
     }
 
-    // --- CLEAN INITIALIZE FUNCTION ---
+    /**
+     * --- (FIXED) CLEAN INITIALIZE FUNCTION ---
+     * This runs when the HTML document is loaded.
+     */
     function initializeApp() {
         const year = document.getElementById('current-year');
         if (year) year.textContent = new Date().getFullYear();
@@ -681,19 +681,17 @@
             ingredientBtn.addEventListener("click", generateIngredientInfo);
         }
 
-        // On load, show the home page and hide all others.
-        // This replaces the old "active" class logic in the CSS.
-        document.querySelectorAll('.page-content').forEach(page => {
-            if (page.id === 'home-page') {
-                page.style.display = 'block';
-                page.classList.add('active');
-            } else {
-                page.style.display = 'none';
-            }
-        });
+        // default home page
+        // This is the same logic as your original file, so it will work.
+        const homePage = document.getElementById("home-page");
+        if (homePage) {
+            homePage.classList.add("active");
+        }
     }
 
-    window.onload = initializeApp;
+    // Use DOMContentLoaded to run the init function as soon as the
+    // HTML is ready, which is faster and more reliable than window.onload.
+    document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
