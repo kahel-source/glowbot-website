@@ -59,13 +59,14 @@
     </style>
 </head>
 <body>
-
+    
         <!-- Header Navigation (Shared across all "pages") -->
         <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <a href="#" class="text-2xl font-black tracking-wider text-primary-custom" onclick="showPage('home-page')">GlowBot<span class="text-gray-800">.ai</span></a>
                 <nav class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#features" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#features')">Features</a>
+                    <a href="#problem" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#problem')">Our Solution</a>
                     <a href="#mission" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#mission')">Mission</a>
                     <a href="#cta" class="text-gray-600 hover:text-primary-custom transition duration-150" onclick="showPage('home-page', '#cta')">Download</a>
                 </nav>
@@ -80,7 +81,7 @@
             <!-- 1. HOME PAGE (The main landing page content) -->
             <!-- ------------------------------------------------------------------- -->
             <div id="home-page" class="page-content active">
-
+                
                 <!-- Hero Section -->
                 <section class="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
@@ -142,7 +143,7 @@
                         </div>
                     </div>
                 </section>
-
+                
 
 <!-- NEW GEMINI FEATURE: Ingredient Intelligence Decoder (Google Search Grounding) -->
 <section id="ingredient-decoder" class="py-16 bg-white">
@@ -159,7 +160,7 @@
                     Decode Ingredient
                 </button>
             </div>
-
+            
             <div id="ingredientOutput" class="bg-white rounded-lg border border-gray-200 text-gray-700 text-sm">
                 Enter an ingredient and click "Decode Ingredient" to see a scientifically-backed summary of its benefits.
             </div>
@@ -214,7 +215,7 @@
                         </div>
                     </div>
                 </section>
-
+                
                <!-- Mission & Vision Section (New) -->
 <section id="mission" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -234,8 +235,8 @@
         </div>
     </div>
 </section>
-
-
+                
+                
                 <!-- Call to Action Section -->
                 <section id="cta" class="py-20">
                     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-primary-custom rounded-3xl p-12 text-center shadow-2xl">
@@ -252,6 +253,8 @@
                     </div>
                 </section>
             </div><!-- End of #home-page -->
+
+
             <!-- ------------------------------------------------------------------- -->
             <!-- 2. AWARENESS PAGE (Interactive Content for Footer Link) -->
             <!-- ------------------------------------------------------------------- -->
