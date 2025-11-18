@@ -419,53 +419,7 @@
 </div>
 </div><!-- End of #encouragement-page -->
             <!-- ------------------------------------------------------------------- -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Plans</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        /* Custom CSS Variables & Utility Classes for Static Theming */
-        /* ------------------------------------------------------------------- */
-        :root {
-            /* Static brand color: Soft Aqua (#6DDAD3) */
-            --color-primary: 109 218 211; /* RGB for Soft Aqua (#6DDAD3) */
-            --color-accent: 255 255 255; /* Pure White */
-            --color-dark: 23 23 23;      /* Near black text */
-
-            /* New derived color for Premium Card Background */
-            --color-premium-dark: 70 180 170; /* Deep Aqua/Teal (#46B4AA) */
-            /* New accent color for Premium highlights (Gold/Yellow) */
-            --color-premium-accent: 255 204 0; /* Gold (#FFCC00) */
-
-            /* NEW: Colors for the distinct Annual Card Background and Accent */
-            --color-annual-elite: 240 240 240; /* Off-White/Silver Background */
-            --color-annual-glow: 173 216 230; /* Light Blue Glow */
-            --color-annual-text-accent: 0 0 0; /* Near Black Text for Contrast */
-        }
-        
-        /* Utility classes using the new custom properties */
-        .border-primary-custom { border-color: rgb(var(--color-primary)); }
-        .text-primary-custom { color: rgb(var(--color-primary)); }
-        .bg-primary-custom { background-color: rgb(var(--color-primary)); }
-
-        /* Custom Classes for the Premium Tier Visual Enhancement */
-        .bg-premium-dark { background-color: rgb(var(--color-premium-dark)); }
-        .text-premium-accent { color: rgb(var(--color-premium-accent)); }
-
-        /* NEW: Custom Classes for the Annual Tier Visual Enhancement */
-        .bg-annual-elite { background-color: rgb(var(--color-annual-elite)); }
-        .text-annual-text-accent { color: rgb(var(--color-annual-text-accent)); }
-
-
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-gray-50 antialiased">
-
-
+<!-- 5. PRICING & PLANS PAGE -->
 <div id="pricing-page" class="page-content py-64">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
@@ -476,7 +430,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <!-- Free Tier -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-gray-200 text-left flex flex-col justify-between transition duration-500 hover:shadow-xl">
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-custom/50 text-left flex flex-col justify-between transition duration-500 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold mb-4 text-gray-700">Free Tier</h2>
                     <p class="text-5xl font-extrabold text-primary-custom mb-3">₱0 / Month</p>
@@ -493,49 +447,48 @@
                 </button>
             </div>
 
-            <!-- Premium Tier (Popular Choice) -->
-            <div class="relative bg-premium-dark p-8 rounded-xl shadow-2xl shadow-[rgba(70,180,170,0.4)] text-left flex flex-col z-10 transition duration-500 transform hover:scale-[1.03]">
+            <!-- Premium Tier (Popular Choice) - UNIFIED WHITE DESIGN -->
+            <div class="relative bg-white p-8 rounded-xl shadow-2xl shadow-gray-300 text-left flex flex-col z-10 transition duration-500 transform hover:scale-[1.03] border-t-4 border-primary-custom">
                 <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-4 py-2 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
                     ⭐ POPULAR CHOICE
                 </span>
-                <h2 class="text-2xl font-bold mb-4 text-white">Premium</h2>
+                <h2 class="text-2xl font-bold mb-4 text-gray-700">Premium</h2>
                 
-                <p class="text-6xl font-black text-white mb-3">₱550 / Month</p>
-                <p class="text-gray-200 mb-6 flex-grow">Unlock your Personal Skin Science Lab and <strong>stop guessing</strong> if your routine works.</p>
+                <p class="text-6xl font-black text-primary-custom mb-3">₱550 / Month</p>
+                <p class="text-gray-600 mb-6 flex-grow">Unlock your Personal Skin Science Lab and <strong>stop guessing</strong> if your routine works.</p>
 
-                <ul class="space-y-3 text-sm text-white mb-8">
+                <ul class="space-y-3 text-sm text-gray-700 mb-8">
                     
-                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span>Everything in Free</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)**</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)**</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Everything in Free</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)**</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)**</span></li>
                 </ul>
                 
-                <!-- Updated Button: Text color changed to text-white -->
-                <button class="w-full py-4 bg-gradient-to-r from-primary-custom to-premium-dark text-white font-extrabold text-lg rounded-full 
-                               border border-white
-                               shadow-[0_10px_30px_rgba(109,218,211,0.6)] hover:shadow-[0_15px_40px_rgba(109,218,211,0.8)] 
+                <!-- Button uses full brand color fill and white text for high contrast -->
+                <button class="w-full py-4 bg-primary-custom text-white font-extrabold text-lg rounded-full 
+                               shadow-lg hover:shadow-xl 
                                hover:scale-[1.02] transition duration-300 transform">
                     Upgrade Now
                 </button>
             </div>
 
-            <!-- Annual Elite Tier (Ultimate Savings) -->
-            <div class="relative bg-annual-elite p-8 rounded-xl shadow-2xl border-2 border-primary-custom text-left flex flex-col scale-[1.05] z-20 transition duration-500 transform hover:scale-[1.1] 
-                        shadow-[0_0_30px_rgba(173,216,230,0.7)]">
+            <!-- Annual Elite Tier (Ultimate Savings) - UNIFIED WHITE DESIGN -->
+            <div class="relative bg-white p-8 rounded-xl shadow-2xl border-t-4 border-primary-custom text-left flex flex-col scale-[1.05] z-20 transition duration-500 transform hover:scale-[1.1] 
+                        shadow-primary-custom/30">
                 
                 <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-12 py-2.5 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
                     👑 ULTIMATE SAVINGS! 👑
                 </span>
                 
-                <!-- Title size increased from text-3xl to text-4xl -->
-                <h2 class="text-4xl font-extrabold mb-4 text-annual-text-accent">Annual Elite</h2>
-                <!-- Price size increased from text-6xl to text-7xl -->
-                <p class="text-7xl font-black text-annual-text-accent mb-3">₱5,999 / Year</p>
+                <!-- Title size increased to text-4xl -->
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-700">Annual Elite</h2>
+                <!-- Price size increased to text-7xl -->
+                <p class="text-7xl font-black text-primary-custom mb-3">₱5,999 / Year</p>
                 <p class="text-gray-600 mb-6 flex-grow">Maximize savings and access all future premium features first. <strong>(Save an extra ₱601!)</strong></p>
 
-                <!-- Increased space-y from 3 to 4 for better vertical spacing -->
-                <ul class="space-y-4 text-sm text-annual-text-accent mb-8">
+                <!-- Increased space-y and Gold checkmarks retained for exclusivity -->
+                <ul class="space-y-4 text-sm text-gray-700 mb-8">
                     
                     <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Everything in Premium</span></li>
                     <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium"><strong>Priority Feature Access</strong> (Be first to new tools!)</span></li>
@@ -545,14 +498,14 @@
                 </ul>
                 <button class="w-full py-4 bg-primary-custom text-[rgb(var(--color-dark))] font-extrabold text-lg rounded-full 
                                border border-gray-300
-                               shadow-[0_10px_30px_rgba(109,218,211,0.6)] hover:shadow-[0_15px_40px_rgba(109,218,211,0.8)] 
+                               shadow-lg hover:shadow-xl
                                hover:scale-[1.02] transition duration-300 transform">
                     Get Annual Elite Plan
                 </button>
             </div>
         </div>
     </div>
-</div><!-- End of #pricing-page -->
+</div>
 <!-- ------------------------------------------------------------------- -->
 <!-- 5. FAQ/RESOURCES PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
