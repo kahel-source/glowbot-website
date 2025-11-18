@@ -421,7 +421,8 @@
             <!-- ------------------------------------------------------------------- -->
 <!-- 2. PRICING & PLANS PAGE (Interactive Content for Footer Link) -->
 <!-- ------------------------------------------------------------------- -->
-<div id="pricing-page" class="page-content py-64">
+<!-- FIX: Changed py-64 to standard responsive padding -->
+<div id="pricing-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
         <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -429,7 +430,7 @@
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Free Tier -->
+            <!-- Free Tier (Structural Basis) -->
             <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary-custom/50 text-left flex flex-col justify-between transition duration-500 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold mb-4 text-gray-700">Free Tier</h2>
@@ -447,24 +448,26 @@
                 </button>
             </div>
 
-            <!-- Premium Tier (Popular Choice) - FINAL UNIFIED DESIGN -->
-            <div class="relative bg-white p-8 rounded-xl shadow-2xl shadow-gray-300 text-left flex flex-col z-10 transition duration-500 transform hover:scale-[1.03] border-t-4 border-primary-custom">
-                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-4 py-2 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
-                    ⭐ POPULAR CHOICE
-                </span>
-                <h2 class="text-2xl font-bold mb-4 text-gray-700">Premium</h2>
-                
-                <p class="text-6xl font-black text-primary-custom mb-3">₱550 / Month</p>
-                <!-- FIX: Removed flex-grow here to prevent unwanted vertical gap -->
-                <p class="text-gray-600 mb-6">Unlock your Personal Skin Science Lab and <strong>stop guessing</strong> if your routine works.</p>
-
-                <ul class="space-y-3 text-sm text-gray-700 mb-8">
+            <!-- Premium Tier (POPULAR CHOICE) - FIX: Added justify-between and content wrapper -->
+            <div class="relative bg-white p-8 rounded-xl shadow-2xl shadow-gray-300 text-left flex flex-col justify-between z-10 transition duration-500 transform hover:scale-[1.03] border-t-4 border-primary-custom">
+                <div>
+                    <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-4 py-2 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
+                        ⭐ POPULAR CHOICE
+                    </span>
+                    <h2 class="text-2xl font-bold mb-4 text-gray-700">Premium</h2>
                     
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Everything in Free</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)**</span></li>
-                </ul>
+                    <p class="text-6xl font-black text-primary-custom mb-3">₱550 / Month</p>
+                    <!-- FIX: Removed flex-grow -->
+                    <p class="text-gray-600 mb-6">Unlock your Personal Skin Science Lab and <strong>stop guessing</strong> if your routine works.</p>
+
+                    <ul class="space-y-3 text-sm text-gray-700 mb-8">
+                        
+                        <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Everything in Free</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)</span></li>
+                    </ul>
+                </div>
                 
                 <button class="w-full py-4 bg-primary-custom text-white font-extrabold text-lg rounded-full 
                                shadow-lg hover:shadow-xl 
@@ -473,30 +476,32 @@
                 </button>
             </div>
 
-            <!-- Annual Elite Tier (Ultimate Savings) - FINAL UNIFIED DESIGN -->
-            <div class="relative bg-white p-8 rounded-xl shadow-2xl border-t-4 border-primary-custom text-left flex flex-col scale-[1.05] z-20 transition duration-500 transform hover:scale-[1.1] 
+            <!-- Annual Elite Tier (ULTIMATE SAVINGS) - FIX: Added justify-between and content wrapper -->
+            <div class="relative bg-white p-8 rounded-xl shadow-2xl border-t-4 border-primary-custom text-left flex flex-col justify-between scale-[1.05] z-20 transition duration-500 transform hover:scale-[1.1] 
                         shadow-primary-custom/30">
-                
-                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-12 py-2.5 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
-                    👑 ULTIMATE SAVINGS! 👑
-                </span>
-                
-                <!-- Title size increased to text-4xl -->
-                <h2 class="text-4xl font-extrabold mb-4 text-gray-700">Annual Elite</h2>
-                <!-- Price size increased to text-7xl -->
-                <p class="text-7xl font-black text-primary-custom mb-3">₱5,999 / Year</p>
-                <!-- FIX: Removed flex-grow here to prevent unwanted vertical gap -->
-                <p class="text-gray-600 mb-6">Maximize savings and access all future premium features first. <strong>(Save an extra ₱601!)</strong></p>
-
-                <!-- Increased space-y and Gold checkmarks retained for exclusivity -->
-                <ul class="space-y-4 text-sm text-gray-700 mb-8">
+                <div>
+                    <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-12 py-2.5 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
+                        👑 ULTIMATE SAVINGS! 👑
+                    </span>
                     
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Everything in Premium</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium"><strong>Priority Feature Access</strong> (Be first to new tools!)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium"><strong>Exclusive App Themes</strong> (Personalize your experience)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Dedicated Customer Support</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Annual Review & Personalized Report</span></li>
-                </ul>
+                    <!-- Title size increased to text-4xl -->
+                    <h2 class="text-4xl font-extrabold mb-4 text-gray-700">Annual Elite</h2>
+                    <!-- Price size increased to text-7xl -->
+                    <p class="text-7xl font-black text-primary-custom mb-3">₱5,999 / Year</p>
+                    <!-- FIX: Removed flex-grow -->
+                    <p class="text-gray-600 mb-6">Maximize savings and access all future premium features first. <strong>(Save an extra ₱601!)</strong></p>
+
+                    <!-- Increased space-y and Gold checkmarks retained for exclusivity -->
+                    <ul class="space-y-4 text-sm text-gray-700 mb-8">
+                        
+                        <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Everything in Premium</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium"><strong>Priority Feature Access</strong> (Be first to new tools!)</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium"><strong>Exclusive App Themes</strong> (Personalize your experience)</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Dedicated Customer Support</span></li>
+                        <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span class="font-medium">Annual Review & Personalized Report</span></li>
+                    </ul>
+                </div>
+
                 <button class="w-full py-4 bg-primary-custom text-[rgb(var(--color-dark))] font-extrabold text-lg rounded-full 
                                border border-gray-300
                                shadow-lg hover:shadow-xl
