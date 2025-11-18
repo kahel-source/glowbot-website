@@ -419,7 +419,7 @@
 </div>
 </div><!-- End of #encouragement-page -->
             <!-- ------------------------------------------------------------------- -->
-       <html lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -459,14 +459,14 @@
         .bg-annual-elite { background-color: rgb(var(--color-annual-elite)); }
         .text-annual-text-accent { color: rgb(var(--color-annual-text-accent)); }
 
+
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-gray-50 antialiased">
 
-<!-- 2. PRICING & PLANS PAGE (Interactive Content for Footer Link) -->
-<!-- ------------------------------------------------------------------- -->
-<div id="pricing-page" class="page-content pt-16 pb-24 sm:pt-24 sm:pb-32">
+
+<div id="pricing-page" class="page-content py-64">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl font-extrabold text-gray-800 mb-6 border-b-4 border-primary-custom pb-3">Pricing & Plans</h1>
         <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -475,7 +475,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- 1. FREE TIER (Content Spacing Fixed) -->
+            <!-- Free Tier -->
             <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-gray-200 text-left flex flex-col justify-between transition duration-500 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold mb-4 text-gray-700">Free Tier</h2>
@@ -488,45 +488,44 @@
                     <li class="flex items-center space-x-2"><span class="text-primary-custom font-bold">✓</span><span>Initial Routine Recommendations</span></li>
                     <li class="flex items-center space-x-2"><span class="text-primary-custom font-bold">✓</span><span>Access to Ingredient Decoder (LLM)</span></li>
                 </ul>
-                <button class="w-full py-4 bg-primary-custom text-[rgb(var(--color-dark))] font-extrabold text-lg rounded-full 
-                               border border-gray-300 /* Added border for definition */
-                               shadow-[0_10px_30px_rgba(109,218,211,0.6)] hover:shadow-[0_15px_40px_rgba(109,218,211,0.8)] 
-                               hover:scale-[1.02] transition duration-300 transform">
+                <button class="w-full py-4 border border-gray-300 text-primary-custom font-semibold rounded-full shadow-sm hover:shadow-md hover:bg-primary-custom/10 transition duration-300">
                     Start Free Plan
                 </button>
             </div>
 
-            <!-- 2. PREMIUM TIER (POPULAR CHOICE - With Black Border on Button) -->
+            <!-- Premium Tier (Popular Choice) -->
             <div class="relative bg-premium-dark p-8 rounded-xl shadow-2xl shadow-[rgba(70,180,170,0.4)] text-left flex flex-col z-10 transition duration-500 transform hover:scale-[1.03]">
-                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-3 py-1 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white">
+                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-4 py-2 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
                     ⭐ POPULAR CHOICE
                 </span>
                 <h2 class="text-2xl font-bold mb-4 text-white">Premium</h2>
+                
                 <p class="text-6xl font-black text-white mb-3">₱550 / Month</p>
-                <p class="text-gray-200 mb-6 flex-grow">Unlock your Personal Skin Science Lab and **stop guessing** if your routine works.</p>
+                <p class="text-gray-200 mb-6 flex-grow">Unlock your Personal Skin Science Lab and <strong>stop guessing</strong> if your routine works.</p>
 
                 <ul class="space-y-3 text-sm text-white mb-8">
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span>Everything in Free</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)</span></li>
+                    
+                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span>Everything in Free</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>Weekly Progress Tracking</strong> (See real results)</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>AI-Driven Product Filter & Save</strong> (Saves money)**</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-white font-black">✔</span><span><strong>Unlimited Routine Customizations</strong> (Total control)**</span></li>
                 </ul>
                 
-                <!-- PREMIUM BUTTON: Added thin black border as requested -->
-                <button class="w-full py-4 bg-gradient-to-r from-primary-custom to-premium-dark text-[rgb(var(--color-dark))] font-extrabold text-lg rounded-full 
-                               border border-black /* ADDED THIN BLACK BORDER */
+                <!-- Updated Button: Text color changed to text-white -->
+                <button class="w-full py-4 bg-gradient-to-r from-primary-custom to-premium-dark text-white font-extrabold text-lg rounded-full 
+                               border border-white
                                shadow-[0_10px_30px_rgba(109,218,211,0.6)] hover:shadow-[0_15px_40px_rgba(109,218,211,0.8)] 
                                hover:scale-[1.02] transition duration-300 transform">
                     Upgrade Now
                 </button>
             </div>
 
-            <!-- 3. ANNUAL TIER (ULTIMATE VALUE - Elite Theme) -->
-            <div class="relative bg-annual-elite p-8 rounded-xl shadow-2xl border-2 border-primary-custom text-left flex flex-col scale-[1.07] z-20 transition duration-500 transform hover:scale-[1.1] 
+            <!-- Annual Elite Tier (Ultimate Savings) -->
+            <div class="relative bg-annual-elite p-8 rounded-xl shadow-2xl border-2 border-primary-custom text-left flex flex-col scale-[1.05] z-20 transition duration-500 transform hover:scale-[1.1] 
                         shadow-[0_0_30px_rgba(173,216,230,0.7)]">
-                <!-- BEST VALUE Banner for Annual -->
-                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-4 py-1.5 rounded-full absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white">
-                    👑 ULTIMATE SAVINGS 👑
+                
+                <span class="bg-primary-custom text-[rgb(var(--color-dark))] text-xs font-black uppercase px-12 py-2.5 rounded-full absolute -top-3 left-1/2 transform -translate-x-1/2 shadow-xl border-2 border-white whitespace-nowrap">
+                    👑 ULTIMATE SAVINGS! 👑
                 </span>
                 
                 <h2 class="text-3xl font-bold mb-4 text-annual-text-accent">Annual Elite</h2>
@@ -534,14 +533,15 @@
                 <p class="text-gray-600 mb-6 flex-grow">Maximize savings and access all future premium features first. <strong>(Save an extra ₱601!)</strong></p>
 
                 <ul class="space-y-3 text-sm text-annual-text-accent mb-8">
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Everything in Premium</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Priority Feature Access</strong> (Be first to new tools!)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span><strong>Exclusive App Themes</strong> (Personalize your experience)</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Dedicated Customer Support</span></li>
-                    <li class="flex items-center space-x-2"><span class="text-primary-custom font-black">✔</span><span>Annual Review & Personalized Report</span></li>
+                    
+                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span>Everything in Premium</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span><strong>Priority Feature Access</strong> (Be first to new tools!)</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span><strong>Exclusive App Themes<strong> (Personalize your experience)</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span>Dedicated Customer Support</span></li>
+                    <li class="flex items-center space-x-2"><span class="text-premium-accent font-black">✔</span><span>Annual Review & Personalized Report</span></li>
                 </ul>
                 <button class="w-full py-4 bg-primary-custom text-[rgb(var(--color-dark))] font-extrabold text-lg rounded-full 
-                               border border-gray-300 /* Added border for definition */
+                               border border-gray-300
                                shadow-[0_10px_30px_rgba(109,218,211,0.6)] hover:shadow-[0_15px_40px_rgba(109,218,211,0.8)] 
                                hover:scale-[1.02] transition duration-300 transform">
                     Get Annual Elite Plan
